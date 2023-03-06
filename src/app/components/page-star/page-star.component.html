@@ -1,0 +1,42 @@
+<div class="container">
+    <section class="header">
+        <div class="nav">
+            <ng-container *ngFor="let item of buttons; let i = index">
+                <div class="nav__text"><span>{{item}}</span></div>
+                <div [ngClass]="i === 0 ? 'nav__bar-first' : 'nav__bar'" *ngIf="i !== 3"></div>
+            </ng-container>
+        </div>
+    </section>
+
+    <section>
+        <h2 id="title"> Dashboard Capacitación </h2>
+        <div class="body">
+            <div class="data" *ngFor="let item of data">
+                <span class="data__type">{{item.type}}</span>
+                <span class="data__percentage">
+                    <mat-icon [ngClass]="item.status ? 'data__percentage__status--change' : 'data__percentage__status'">
+                        {{ item.status ? 'arrow_drop_down': 'arrow_drop_up'}}
+                    </mat-icon>
+                    <span class="data__percentage__value">{{item.percentage | percent}}</span>
+                </span>
+                <div class="data__signal">
+                    <span class="data__signal__value">{{item.value}}</span>
+                    <span class="data__signal__unit">{{item.unit}}</span>
+                    <mat-icon class="data__signal__icon">call_made</mat-icon>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="padding-top">
+        <h2 id="title-layout">PRUEBA LAYOUT</h2>
+        <div class="option">
+            <div class="option__item" *ngFor="let item of options">
+                <mat-icon class="option__item__icon"
+                    [ngClass]="item.color ==='red' ? 'option__item__icon--red' : (item.color ==='blue' ? 'option__item__icon--blue' : 'option__item__icon--orange')">{{item.icon}}</mat-icon>
+                <span class="option__item__text">{{item.name}}</span>
+            </div>
+        </div>
+    </section>
+
+</div>
